@@ -1,0 +1,187 @@
+.skill{
+    background: var(--sub);
+    padding: 30px 0px;
+    gap: 20px;
+}
+.s-b-cover {
+    flex-wrap: wrap;
+    gap:20px;
+    padding:20px;
+}
+.s-box{
+    width:18%;
+    padding: 25px 10px;
+    background: var(--main);
+    color: var(--sec);
+    border-radius: 0 0px 30px 0;
+    gap:10px;
+    &:hover{
+       cursor: pointer; 
+       scale: 1.1;
+       transition: all 0.5s ease-in;
+        box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.8), /* White glow */
+        0 0 30px rgba(255, 255, 255, 0.4);
+    }
+}
+.s-box > h2{
+   background:linear-gradient(lightpink,lightgreen);
+   background-size: cover;
+   background-clip: text; 
+   color: transparent;
+}
+.s-pic > img{
+    width: 100px;
+    height:100px;
+    object-fit:contain;
+}
+/* degree */
+.degree{
+    width: 100%;
+    gap:10px;
+    position: relative;
+}
+.degree > h2{
+    position: relative;
+}
+.edu-list{
+  width: 80%;
+  justify-content: space-evenly;
+}
+.edu-item{
+    width: 40%;
+    background-color:var(--sub);
+    border-radius: 5px;
+    overflow: hidden;
+     border: 5px solid  rgb(215, 211, 211);
+    border-top: none;
+    cursor: pointer;
+    &:hover{
+        background-color: var(--sec);
+        box-shadow: 0 0 5px rgb(180, 174, 174,0.4);
+        scale: 1.05;
+        transition: all 0.3s;
+    }
+}
+.e-top{
+    height: 30px;
+    width: 100%;
+    background-color:rgb(215, 211, 211);
+    gap: 10px;
+    justify-content: flex-start;
+    padding-left: 3px;
+}
+.e-top > p{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--sec);
+}
+.e-top > p:first-child{
+    background: red;
+}
+.e-top > p:nth-child(2){
+    background: yellow;
+}
+.e-top > p:last-child{
+    background: green;
+}
+.e-bot{
+    width: 100%;
+    padding: 20px 0;
+    gap: 20px;
+}
+.s-txt{
+  gap: 3px;
+}
+.e-line > img{
+  width: 45px;
+}
+.e-line > p{
+    width: 3px;
+    height: 50px;
+    background-color:var(--main);
+    position: relative;
+    &::after{
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: black;
+        position: absolute;
+        bottom:-10px;
+        left: -2px;
+    }
+}
+@media screen and (max-width:1000px) and (min-width:700px){
+  .skill{
+    padding: 20px 0;
+  }
+  .s-box{
+    width: 30%;
+  }
+  .s-box > h2{
+    font-size: 18px;
+  }
+  .edu-list{
+    width: 100%;
+  }
+  .edu-item{
+    width: 47%;
+  }
+}
+@media screen and (max-width:700px) and (min-width:300px){
+    .skill{
+        padding: 15px 0;
+        gap:15px
+    }
+    .s-box{
+      width:47%;
+    }
+    .s-b-cover {
+        gap:15px;
+        padding: 10px;
+        padding:10px;
+    }
+    .s-pic > img{
+        width: 80px;
+        height: 80px;
+    }
+    .edu-list{
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+    .edu-item{
+      width: 90%;
+    }
+    .s-txt{
+        align-self: flex-start;
+    }
+    .s-txt > h3{
+      font-size: 15px;
+    }
+    .s-txt > p{
+        font-size: 12px;
+    }
+    .e-line > img{
+        width: 30px;
+    }
+    .e-line > p{
+        height: 30px;
+        width: 2px;
+        &::after{
+            width: 5px;
+            height: 5px;
+            left: -1px;
+            bottom: -7px;
+        }
+    }
+    .e-top{
+        height: 25px;
+    }
+    .e-top > p{
+        width: 8px;
+        height: 8px;
+    }
+}

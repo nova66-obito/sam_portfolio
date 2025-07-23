@@ -1,0 +1,110 @@
+.project {
+  padding: 30px 0;
+  gap: 20px;
+  background: var(--main);
+  background: url(../../assets/bg4.jpg) no-repeat center fixed;
+  background-size: cover;
+}
+.project > h1 {
+  font-size: 48px;
+  color: var(--sec);
+  &::after,
+  &::before {
+    background-color: var(--sec);
+  }
+}
+.project-content {
+  width: 100%;
+  padding: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.project-item {
+  width: 18%;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover > .pro-pic > img {
+    scale: 1.1;
+    transition: all 0.3s;
+    filter: brightness(60%);
+  }
+}
+.project-box {
+  position: absolute;
+}
+.pro-pic {
+  width: 100%;
+  height: 100%;
+}
+.pro-pic > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pro-txt {
+  width: 100%;
+  color: var(--sec);
+  height: 100%;
+  top: 0;
+  left: -500px;
+  gap: 20px;
+  position: relative;
+  scale: 0;
+}
+.pro-txt > a {
+  color: var(--main);
+  padding: 8px 15px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  &:hover{
+    color: white;
+    background-color:var(--main);
+    box-shadow: 0 0 5px white;
+    transition: all 0.3s;
+  }
+}
+.see {
+  left: 0;
+  scale: 1;
+  background-color: var(--glass);
+}
+.see > img {
+  filter: brightness(50%);
+}
+
+@media screen and (max-width: 700px) and (min-width: 300px) {
+  .project{
+    padding: 15px 0;
+  }
+  .project > h1{
+    font-size: 30px;
+  }
+  .project-content{
+    gap:10px;
+    padding: 5px;
+  }
+  .project-item {
+    width: 45%;
+    height: 120px;
+  }
+  .pro-txt > a {
+    padding: 5px 10px;
+    font-size: 8px;
+  }
+  .pro-txt > h3{
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 900px) and (min-width: 700px) {
+  .project-item {
+    width: 30%;
+    height: 250px;
+  }
+
+}

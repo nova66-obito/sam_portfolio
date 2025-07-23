@@ -1,0 +1,147 @@
+.about {
+  background: var(--sec);
+  padding: 30px 20px;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.a-pic {
+  width: 50%;
+  height: 400px;
+}
+.a-pic > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.a-txt {
+  width: 60%;
+  gap: 20px;
+  padding: 20px;
+}
+.a-t-top {
+  font-size: 2rem;
+  align-self: flex-start;
+}
+.dot {
+  height: 40px;
+  background: rgb(215, 211, 211);
+  width: 100%;
+  gap: 10px;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+.dot > p {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+}
+.dot > p:nth-child(2) {
+  background: yellow;
+}
+.dot > p:last-child {
+  background-color: green;
+}
+.a-t-bot {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  &:hover {
+    transition: all 0.3s;
+    box-shadow: 0 0 5px black;
+  }
+}
+.a-t-cover {
+  background: var(--sub);
+  padding: 30px 30px;
+  border: 10px solid rgb(215, 211, 211);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.a-t-cover > p {
+  letter-spacing: 1px;
+}
+.a-i-cover {
+  display: flex;
+  gap: 20px;
+}
+.a-icon > h3 {
+  padding-bottom: 10px;
+}
+.a-i-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+.a-i-cover > a {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1.5px solid black;
+  display: grid;
+  place-content: center;
+  &:hover > .a-i-icon {
+    transition: all 0.3s;
+    transform: rotateX(360deg);
+    color: white;
+  }
+  &:hover {
+    background-color: var(--main);
+    border: 1.5px solid var(--sec);
+  }
+}
+@media screen and (max-width: 700px) and (min-width: 300px) {
+  .about {
+    flex-direction: column;
+    padding: 10px 0px;
+    justify-content: center;
+  }
+  .a-pic {
+    width: 100%;
+    height: 230px;
+  }
+  .a-txt {
+    width: 100%;
+  }
+  .a-t-cover {
+    padding: 20px;
+    gap: 12px;
+  }
+  .a-t-cover > p{
+    font-size: 13px;
+  }
+  .sup {
+    font-size: 16px;
+  }
+  .a-i-cover > a {
+    width: 30px;
+    height: 30px;
+  }
+  .a-i-icon {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 700px) {
+  .about {
+    gap: 20px;
+    padding: 30px 20px;
+  }
+  .a-pic {
+    order: 1;
+    height: 300px;
+  }
+  .a-txt {
+    width: 70%;
+  }
+  .a-t-cover {
+    padding: 20px;
+  }
+  .a-t-top {
+    transform: translateY(-10px);
+  }
+}

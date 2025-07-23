@@ -1,0 +1,58 @@
+.foot{
+    background: var(--sub);
+    padding: 10px 30px;
+    justify-content: space-between;
+    position: relative;
+}
+footer > a > img{
+    width: 40px;
+    filter: brightness(130%);
+}
+.upper{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background:var(--sec);
+    position: absolute;
+    left: 50%; /* Change from 47% to 50% */
+    top: 30%; /* Position at 50% from top */
+    transform: translate(-50%, -50%); /* This does the actual centering */
+    display: grid;
+    place-content: center;
+    box-shadow: 0 0 5px rgb(0, 0, 0 , 0.5);
+}
+.f-ar{
+    font-size: 40px;
+    rotate: 90deg;
+    color: var(--main);
+}
+
+@media screen and (max-width:700px) and (min-width:300px){
+    .foot{
+        padding: 10px;
+    }
+    .upper{
+        height: 40px;
+        width: 40px;
+        top:30%;
+    }
+    .f-ar{
+        font-size: 20px;
+    }
+    footer > a > img{
+        width: 30px;
+    }
+    .copy > p{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width:900px) and (min-width:700px){
+    .upper{
+        height: 50px;
+        width: 50px;
+        top:15%;
+    }
+    .f-ar{
+        font-size: 20px;
+    }
+}
