@@ -44,7 +44,8 @@ export default function About() {
                         {/* text and details */}
                         <div className="a-t-cover">
                             <h2 className='sup'>👋 Hello! I’m Sambath,</h2>
-                            <p>a passionate Full Stack Web Developer with a love for crafting fast, dynamic, and visually appealing digital experiences. I thrive on turning complex ideas into clean, functional, and user-friendly websites and applications.</p>
+                            <p>⚡ a passionate Full Stack Web Developer with a love for crafting fast, dynamic, and visually appealing digital experiences. I thrive on turning complex ideas into clean, functional, and user-friendly websites and applications.</p>
+                            <p>⚡ I am actively looking for a full-time developer role to start my career. I am motivated, adaptable, and ready to learn. Let's connect and discuss how I can add value to your team.</p>
                             <div className="a-icon">
                                 <h3>Contact Me</h3>
                                 <div className="a-i-cover">

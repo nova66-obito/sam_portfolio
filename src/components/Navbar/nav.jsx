@@ -34,12 +34,12 @@ export default function Nav() {
                             {link.map((item, i) => {
                                 return (
                                     <>
-                                        <a key={i} href={`#${item.link}`} className="min-cover center" onClick={() => clck(i)}>
+                                        <div key={i} className="min-cover center" onClick={() => clck(i)}>
                                         <div className={`min-link col-center ${show2 === i ? 'show' : null}` } key={i+1}>
                                             <a href={`#${item.link}`}>{item.name}</a>
                                             <a href={`#${item.link}`}>{item.name}</a>
                                         </div>
-                                        </a>
+                                        </div>
                                     </>
                                 )
                             })}

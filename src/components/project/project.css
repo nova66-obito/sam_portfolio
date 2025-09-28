@@ -26,6 +26,7 @@
   overflow: hidden;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s;
   &:hover > .pro-pic > img {
     scale: 1.1;
     transition: all 0.3s;
@@ -52,7 +53,10 @@
   left: -500px;
   gap: 20px;
   position: relative;
-  scale: 0;
+}
+.project-item:hover > .pro-txt{
+  left: 0;
+  transition: all 0.3s;
 }
 .pro-txt > a {
   color: var(--main);
@@ -71,7 +75,6 @@
 }
 .see {
   left: 0;
-  scale: 1;
   background-color: var(--glass);
 }
 .see > img {
@@ -97,8 +100,8 @@
     padding: 5px 10px;
     font-size: 8px;
   }
-  .pro-txt > h3{
-    font-size: 13px;
+  .pro-txt > h4{
+    font-size: 10px;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 700px) {

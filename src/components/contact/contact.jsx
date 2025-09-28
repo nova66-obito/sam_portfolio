@@ -10,9 +10,16 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { SiNetlify } from "react-icons/si";
+import emailjs from '@emailjs/browser';
+
 export default function Contact() {
     const phonenum = "+919361998327";
     const whatsapp = `https://wa.me/${phonenum}`;
+
+    // EmailJS configuration - REPLACE WITH YOUR ACTUAL VALUES
+    const EMAILJS_SERVICE_ID = 'service_poecukg';
+    const EMAILJS_TEMPLATE_ID = 'template_mcqrkxk';
+    const EMAILJS_PUBLIC_KEY = 'K7wk6vztSDrtxvOLI';
 
     // form data
     const [user, setUser] = useState({
@@ -26,6 +33,9 @@ export default function Contact() {
         email: "",
         message: "",
     });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     // Email validation regex
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -84,9 +94,10 @@ export default function Contact() {
         setErrors(prev => ({ ...prev, [name]: error }));
     };
 
-    // Form submission
-    const handleSubmit = (e) => {
+    // Form submission with EmailJS
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
         // Validate all fields
         let isValid = true;
@@ -100,11 +111,37 @@ export default function Contact() {
 
         setErrors(newErrors);
 
-        if (isValid) {
-            console.log("Form is valid, submitting:", user);
-            // Here you would typically send the data to your backend
+        if (!isValid) {
+            toast.error('Please fix the errors in the form', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "dark",
+            });
+            setIsSubmitting(false);
+            return;
+        }
+
+        try {
+            // Send email using EmailJS
+            const result = await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: user.name,
+                    from_email: user.email,
+                    message: user.message,
+                    to_email: 'sambathvj0506@gmail.com',
+                    reply_to: user.email
+                },
+                EMAILJS_PUBLIC_KEY
+            );
+
+            console.log('Email sent successfully:', result.text);
             
-            // Show success toast
             toast.success('Message sent successfully!', {
                 position: "top-center",
                 autoClose: 3000,
@@ -121,17 +158,21 @@ export default function Contact() {
                 email: "",
                 message: "",
             });
-        } else {
-            // Show error toast if validation fails
-            toast.error('Please fix the errors in the form', {
+
+        } catch (error) {
+            console.error('Error sending email:', error);
+            
+            toast.error('Failed to send message. Please try again or contact me directly.', {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 theme: "dark",
             });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -151,8 +192,8 @@ export default function Contact() {
                 <h1 ref={conref} className={`title ${coninView ? 'inview' : ''}`}>get in touch</h1>
                 <div className="c-add col-center">
                     <div className="c-a-txt">
-                        <a href="https://www.google.com/maps/place/Velachery,+Chennai,+Tamil+Nadu/@12.9791139,80.2197719,14z/data=!3m1!4b1!4m6!3m5!1s0x3a525d9ff2065a3b:0x66435015604038cc!8m2!3d12.9754605!4d80.2207047!16zL20vMDc4Ynp6?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer"><span><FaLocationArrow className="c-icons"/></span> velachrrey,chennai-600042</a>
-                        <a href="mailto:sambathvj0506@gamil.com" target="_blank" rel="noopener noreferrer"><sapn><SiGmail className="c-icons"/></sapn> sambathvj0506@gamil.com</a>
+                        <a href="https://www.google.com/maps/place/Velachery,+Chennai,+Tamil+Nadu/@12.9791139,80.2197719,14z/data=!3m1!4b1!4m6!3m5!1s0x3a525d9ff2065a3b:0x66435015604038cc!8m2!3d12.9754605!4d80.2207047!16zL20vMDc4Ynp6?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer"><span><FaLocationArrow className="c-icons"/></span> velachery,chennai-600042</a>
+                        <a href="mailto:sambathvj0506@gamil.com" target="_blank" rel="noopener noreferrer"><span><SiGmail className="c-icons"/></span> sambathvj0506@gamil.com</a>
                         <a href="tel:+919361998327" target="_blank" rel="noopener noreferrer"><span><BiSolidPhoneCall className="c-icons"/></span> +91-93619-98327</a>
                     </div>
                     {/* icon */}
@@ -183,6 +224,7 @@ export default function Contact() {
                                 value={user.name}
                                 onChange={handleInput}
                                 onBlur={handleBlur}
+                                disabled={isSubmitting}
                             />
                             {errors.name && <small className="error-message">{errors.name}</small>}
                         </div>
@@ -194,6 +236,7 @@ export default function Contact() {
                                 value={user.email}
                                 onChange={handleInput}
                                 onBlur={handleBlur}
+                                disabled={isSubmitting}
                             />
                             {errors.email && <small className="error-message">{errors.email}</small>}
                         </div>
@@ -206,12 +249,19 @@ export default function Contact() {
                                 value={user.message}
                                 onChange={handleInput}
                                 onBlur={handleBlur}
+                                disabled={isSubmitting}
                             ></textarea>
                             {errors.message && <small className="error-message">{errors.message}</small>}
                         </div>
-                        <button type="submit" className="center">
-                            SEND MESSAGE
-                            <p className="arrow-icon"><FaLongArrowAltRight className="arrow-real" /></p>
+                        <button 
+                            type="submit" 
+                            className="center"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
+                            <p className="arrow-icon">
+                                <FaLongArrowAltRight className="arrow-real" />
+                            </p>
                         </button>
                     </form>
             </motion.div>

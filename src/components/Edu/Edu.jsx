@@ -22,19 +22,19 @@ export default function Edu() {
         { pic: Skill2, name: 'css' },
         { pic: Skill3, name: 'javascript' },
         { pic: Skill4, name: 'Bootstrap' },
-        { pic: Skill5, name: 'React' },
-        { pic: Skill6, name: 'Node' },
-        { pic: Skill7, name: 'Mongo' },
+        { pic: Skill5, name: 'React js' },
+        { pic: Skill6, name: 'Node js' },
+        { pic: Skill7, name: 'Mongo DB' },
         { pic: Skill8, name: 'git' },
-        { pic: Skill9, name: 'netlify' },
-        { pic: Skill10, name: 'postman' },
+        { pic: Skill9, name: 'postman' },
+        { pic: Skill10, name: 'netlify' },
     ]
     const educationData = [
         {
             degree: "BCA Computer Application",
+            full : "Bachelor of Computer Applications",
             institution: "University of Madras",
             year: "2021 - 2024",
-            details: "GPA: 8.9/10.0",
             epic: Edus1,
         },
         {
@@ -105,6 +105,7 @@ export default function Edu() {
                                         </div>
                                         <div className="s-txt col-center">
                                             <h3>{edu.degree}</h3>
+                                            <p>{edu.full}</p>
                                             <p><strong>{edu.institution}</strong> | {edu.year}</p>
                                             <p>{edu.details}</p>
                                         </div>
